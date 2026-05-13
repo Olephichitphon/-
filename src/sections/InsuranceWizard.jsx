@@ -30,11 +30,16 @@ const InsuranceWizard = () => {
 
   useEffect(() => {
     const fetchBrands = async () => {
+      setLoading(true);
       try {
+        console.log('Fetching brands...');
         const data = await getCarBrands();
+        console.log('Brands fetched:', data);
         setBrands(data);
       } catch (err) {
         console.error('Failed to fetch brands:', err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchBrands();
@@ -201,11 +206,12 @@ const InsuranceWizard = () => {
                     <select 
                       value={formData.brandId}
                       onChange={handleBrandChange}
-                      className="w-full p-4 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 transition-all bg-white"
+                      disabled={loading && brands.length === 0}
+                      className="w-full p-4 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 transition-all bg-white text-slate-900 disabled:opacity-50"
                     >
-                      <option value="">เลือกยี่ห้อ</option>
-                      {brands.map((b) => <option key={b._id} value={b._id}>{b.name}</option>)}
-                      <option value="other">อื่นๆ (ระบุเอง)</option>
+                      <option value="">{loading && brands.length === 0 ? 'กำลังโหลดข้อมูล...' : 'เลือกยี่ห้อ'}</option>
+                      {brands.map((b) => <option key={b._id} value={b._id} className="text-slate-900">{b.name}</option>)}
+                      <option value="other" className="text-slate-900">อื่นๆ (ระบุเอง)</option>
                     </select>
                   </div>
                   {isOtherBrand && <Input label="ระบุยี่ห้อรถ" placeholder="เช่น Tesla, BYD" value={formData.customBrand} onChange={(e) => setFormData({...formData, customBrand: e.target.value})} className="animate-fade-in" />}
