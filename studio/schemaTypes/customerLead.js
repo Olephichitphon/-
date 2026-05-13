@@ -1,48 +1,51 @@
 export default {
   name: 'customerLead',
-  title: 'Customer Lead',
+  title: 'ข้อมูลลูกค้า (Leads)',
   type: 'document',
   fields: [
     {
       name: 'name',
-      title: 'Full Name',
+      title: 'ชื่อลูกค้า',
       type: 'string',
     },
     {
       name: 'phone',
-      title: 'Phone Number',
+      title: 'เบอร์โทรศัพท์',
       type: 'string',
     },
     {
       name: 'carDetails',
-      title: 'Car Details',
+      title: 'รายละเอียดรถ',
       type: 'object',
       fields: [
-        { name: 'brand', type: 'string' },
-        { name: 'model', type: 'string' },
-        { name: 'year', type: 'string' },
-        { name: 'isCustom', type: 'boolean', title: 'Is Manual Input?' },
+        { name: 'brand', title: 'ยี่ห้อ', type: 'string' },
+        { name: 'model', title: 'รุ่น', type: 'string' },
+        { name: 'year', title: 'ปีรถ', type: 'string' },
       ],
     },
     {
       name: 'insuranceType',
-      title: 'Interested In',
+      title: 'ประเภทประกันที่สนใจ',
+      type: 'string',
+    },
+    {
+      name: 'selectedPlan',
+      title: 'แผนประกันที่เลือก',
       type: 'string',
     },
     {
       name: 'status',
-      title: 'Status',
+      title: 'สถานะการติดต่อ',
       type: 'string',
+      initialValue: 'รอดำเนินการ',
       options: {
         list: [
-          { title: 'New', value: 'new' },
-          { title: 'In Progress', value: 'in_progress' },
-          { title: 'Contacted', value: 'contacted' },
-          { title: 'Closed', value: 'closed' },
+          { title: 'รอดำเนินการ', value: 'pending' },
+          { title: 'ติดต่อแล้ว', value: 'contacted' },
+          { title: 'ปิดการขายแล้ว', value: 'closed' },
+          { title: 'ยกเลิก', value: 'cancelled' },
         ],
       },
-      initialValue: 'new',
     },
   ],
-  readOnly: true,
 };

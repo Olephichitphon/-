@@ -1,35 +1,33 @@
 export default {
   name: 'carModel',
-  title: 'Car Model',
+  title: 'รุ่นรถ',
   type: 'document',
   fields: [
     {
       name: 'name',
-      title: 'Model Name',
+      title: 'ชื่อรุ่น',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'brand',
-      title: 'Brand',
+      title: 'ยี่ห้อรถ',
       type: 'reference',
       to: [{ type: 'carBrand' }],
-      validation: (Rule) => Rule.required(),
     },
     {
       name: 'group',
-      title: 'Car Group',
+      title: 'กลุ่มรถ (1-5)',
       type: 'string',
       options: {
         list: [
-          { title: 'Group 1', value: '1' },
-          { title: 'Group 2', value: '2' },
-          { title: 'Group 3', value: '3' },
-          { title: 'Group 4', value: '4' },
-          { title: 'Group 5', value: '5' },
+          { title: 'กลุ่ม 1: รถหรู / Supercar / นำเข้า', value: '1' },
+          { title: 'กลุ่ม 2: รถยุโรป / รถขนาดใหญ่', value: '2' },
+          { title: 'กลุ่ม 3: รถเก๋งขนาดกลาง (Camry/Accord)', value: '3' },
+          { title: 'กลุ่ม 4: รถเก๋งขนาดเล็ก (Civic/Altis)', value: '4' },
+          { title: 'กลุ่ม 5: รถ Eco Car / รถเล็ก (City/Vios/Yaris)', value: '5' },
         ],
       },
-      description: 'Used for premium calculation logic',
     },
   ],
   preview: {

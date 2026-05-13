@@ -1,17 +1,17 @@
 export default {
   name: 'carBrand',
-  title: 'Car Brand',
+  title: 'ยี่ห้อรถ',
   type: 'document',
   fields: [
     {
       name: 'name',
-      title: 'Brand Name',
+      title: 'ชื่อยี่ห้อ',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'logo',
-      title: 'Brand Logo',
+      title: 'โลโก้ยี่ห้อ',
       type: 'image',
       options: {
         hotspot: true,
@@ -19,9 +19,9 @@ export default {
     },
     {
       name: 'order',
-      title: 'Order',
+      title: 'ลำดับการแสดงผล',
       type: 'number',
-      description: 'Priority for display (lower numbers show first)',
+      description: 'ตัวเลขน้อยจะขึ้นก่อน (เช่น 1, 2, 3)',
     },
   ],
 };
