@@ -30,7 +30,7 @@ export const getCarBrands = async () => {
   const query = `*[_type == "carBrand"] | order(order asc, name asc) {
     _id,
     name,
-    logo
+    "logoUrl": logo.asset->url
   }`;
   return await client.fetch(query);
 };
