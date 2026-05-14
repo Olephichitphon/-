@@ -70,15 +70,59 @@ export default defineConfig({
                       ),
                   ])
               ),
+            S.listItem()
+              .title('รุ่นรถ (แยกตามยี่ห้อ)')
+              .id('car-models-grouped')
+              .icon(() => '🚗')
+              .child(
+                S.documentTypeList('carBrand')
+                  .title('เลือกยี่ห้อรถ')
+                  .child(brandId =>
+                    S.documentList()
+                      .title('รุ่นรถ')
+                      .id(`models-${brandId}`)
+                      .filter('_type == "carModel" && brand._ref == $brandId')
+                      .params({ brandId })
+                      .initialValueTemplates([
+                        S.initialValueTemplateItem('carModel-by-brand', { brandId })
+                      ])
+                  )
+              ),
             S.divider(),
             ...S.documentTypeListItems().filter(
-              (listItem) => !['insurancePlan'].includes(listItem.getId())
+              (listItem) => !['insurancePlan', 'carModel', 'carBrand', 'customerLead'].includes(listItem.getId())
             ),
+            S.divider(),
+            S.listItem()
+              .title('จัดการข้อมูลพื้นฐาน')
+              .id('basic-data-management')
+              .child(
+                S.list()
+                  .title('ข้อมูลพื้นฐาน')
+                  .id('basic-data-list')
+                  .items([
+                    S.documentTypeListItem('carBrand').title('รายชื่อยี่ห้อรถ').id('brand-list-item'),
+                    S.documentTypeListItem('carModel').title('รายชื่อรุ่นรถทั้งหมด').id('model-list-item'),
+                    S.documentTypeListItem('customerLead').title('ข้อมูลลูกค้า (Leads)').id('leads-list-item'),
+                  ])
+              ),
           ]),
     }),
   ],
 
   schema: {
     types: schemaTypes,
+    templates: (prev) => [
+      ...prev,
+      {
+        id: 'carModel-by-brand',
+        title: 'Car Model by Brand',
+        schemaType: 'carModel',
+        parameters: [{ name: 'brandId', type: 'string' }],
+        value: (params) => ({
+          brand: { _type: 'reference', _ref: params.brandId }
+        })
+      }
+    ]
   },
 })
