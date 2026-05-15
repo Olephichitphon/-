@@ -18,6 +18,7 @@ const Navbar = () => {
     { title: 'โปรโมชั่น', href: '#promotions' },
     { title: 'รีวิว', href: '#reviews' },
     { title: 'บทความ', href: '#articles' },
+    { title: 'ติดต่อ', href: '#contact' },
   ];
 
   return (
@@ -61,8 +62,8 @@ const Navbar = () => {
       `}</style>
       <nav className={`fixed w-full z-50 bg-white shadow-lg transition-all duration-300 h-16 md:h-24 flex items-center`}>
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
-          {/* Left: Original Logo */}
-          <div className="flex-shrink-0 flex items-center h-full">
+          {/* Left: Logos Grouped (Desktop) */}
+          <div className="flex-shrink-0 flex items-center gap-4 h-full">
             <a href="#" className="flex items-center h-full">
               <img
                 src="/website-images/logo.png"
@@ -70,10 +71,18 @@ const Navbar = () => {
                 className="h-10 md:h-16 w-auto object-contain"
               />
             </a>
+            {/* Fairdee Logo - Desktop Only */}
+            <a href="#" className="hidden lg:flex items-center h-full">
+              <img
+                src="/website-images/fairdee-logo.png"
+                alt="Fairdee Logo"
+                className="h-10 md:h-20 w-auto object-contain"
+              />
+            </a>
           </div>
 
-          {/* Center: Fairdee Logo */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center h-full pointer-events-none md:pointer-events-auto">
+          {/* Center: Fairdee Logo - Mobile Only */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex lg:hidden items-center h-full pointer-events-none md:pointer-events-auto">
             <a href="#" className="flex items-center h-full">
               <img
                 src="/website-images/fairdee-logo.png"
@@ -147,7 +156,7 @@ const Navbar = () => {
                 alt="Fairdee Logo"
                 className="h-16 w-16 object-contain rounded-full border-2 border-[#f58220] drop-shadow-lg"
               />
-              <div className="w-px h-10 bg-gray-400"></div>
+
               <p className="text-[24px] font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#002266] to-[#0044cc] drop-shadow-sm">
                 By พงศกร
               </p>
@@ -156,7 +165,7 @@ const Navbar = () => {
 
           </div>
 
-          <div className="flex flex-col items-center gap-8 py-10 px-6">
+          <div className="flex flex-col items-center gap-4 py-6 px-6">
             {navLinks.map((link, idx) => (
               <a
                 key={link.title}
