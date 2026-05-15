@@ -130,7 +130,7 @@ const Navbar = () => {
         }`}>
         <div className="flex flex-col h-full relative">
           {/* Top Logo Container - Perfectly Framed Face */}
-          <div className="relative overflow-hidden h-80 flex flex-col items-center justify-end border-b border-gray-100 pb-8 px-6 bg-white">
+          <div className="relative overflow-hidden h-60 flex flex-col items-center justify-end border-b border-gray-100 pb-6 px-6 bg-white">
             <div className="absolute inset-0 z-0">
               <img
                 src="/website-images/hero-bg.webp"
@@ -165,24 +165,41 @@ const Navbar = () => {
 
           </div>
 
-          <div className="flex flex-col items-center gap-4 py-6 px-6">
-            {navLinks.map((link, idx) => (
-              <a
-                key={link.title}
-                href={link.href}
-                className={`flex items-center justify-center transition-all duration-300 w-full hover:scale-110 active:scale-95 ${link.title === 'เช็คเบี้ย'
-                  ? 'neon-border-btn text-white px-10 py-4 rounded-2xl shadow-2xl shadow-orange-500/50 my-2 w-fit text-xl font-black'
-                  : 'text-2xl font-black text-gray-800 hover:text-orange-500 w-full text-center'
-                  }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.title}
-              </a>
-            ))}
+          <div className="flex flex-col items-center gap-2 py-2 px-6 overflow-y-auto">
+            {navLinks.map((link, idx) => {
+              if (link.title === 'ติดต่อ') {
+                return (
+                  <div key={link.title} className="flex items-center justify-center gap-10 w-full mt-4 pb-2">
+                    <a href="tel:0812345678" className="text-3xl text-gray-800 hover:text-orange-500 transition-colors">
+                      <i className="fas fa-phone"></i>
+                    </a>
+                    <a href="https://line.me/ti/p/~yourid" target="_blank" rel="noopener noreferrer" className="text-4xl text-[#00c300] hover:scale-110 transition-transform">
+                      <i className="fab fa-line"></i>
+                    </a>
+                    <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" className="text-3xl text-[#1877f2] hover:scale-110 transition-transform">
+                      <i className="fab fa-facebook-f"></i>
+                    </a>
+                  </div>
+                );
+              }
+              return (
+                <a
+                  key={link.title}
+                  href={link.href}
+                  className={`flex items-center justify-center transition-all duration-300 w-full hover:scale-110 active:scale-95 ${link.title === 'เช็คเบี้ย'
+                    ? 'neon-border-btn text-white px-10 py-3 rounded-2xl shadow-2xl shadow-orange-500/50 my-1 w-fit text-xl font-black'
+                    : 'text-xl font-black text-gray-800 hover:text-orange-500 w-full text-center py-2'
+                    }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.title}
+                </a>
+              );
+            })}
           </div>
 
-          <div className="mt-auto text-center py-8 border-t border-gray-50 px-6">
-            <p className="text-gray-400 text-sm font-bold uppercase tracking-widest">Fairdee Insurance By พงศกร</p>
+          <div className="mt-auto text-center py-4 px-6">
+            <p className="text-gray-300 text-[10px] font-bold uppercase tracking-widest">Fairdee Insurance By พงศกร</p>
           </div>
         </div>
       </div>
