@@ -28,6 +28,7 @@ const InsuranceWizard = () => {
     carGroup: '5',
     name: '',
     phone: '',
+    lineId: '',
   });
 
   // Fetch Brands on Mount
@@ -90,6 +91,7 @@ const InsuranceWizard = () => {
         _type: 'customerLead',
         name: formData.name,
         phone: formData.phone,
+        lineId: formData.lineId || '-',
         carDetails: {
           brand: finalBrand,
           model: finalModel,
@@ -101,6 +103,36 @@ const InsuranceWizard = () => {
       };
 
       await writeClient.create(leadDoc);
+
+      // ------------------------------------------
+      // Send Email Notification via Web3Forms
+      // ------------------------------------------
+      const web3formsAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      if (web3formsAccessKey) {
+        try {
+          await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            },
+            body: JSON.stringify({
+              access_key: web3formsAccessKey,
+              subject: `แจ้งเตือนลูกค้าใหม่: ${formData.name}`,
+              from_name: "ระบบประกันภัยออนไลน์",
+              "ชื่อลูกค้า": formData.name,
+              "เบอร์โทรศัพท์": formData.phone,
+              "ไอดีไลน์": formData.lineId || '-',
+              "รถยนต์": `${finalBrand} ${finalModel} (${formData.year})`,
+              "ประเภทประกัน": `ชั้น ${formData.insuranceType === '1' ? '1' : formData.insuranceType.replace('plus', '+')}`
+            })
+          });
+        } catch (emailErr) {
+          console.error('Failed to send email notification:', emailErr);
+          // ไม่ต้อง alert error ตรงนี้ เพราะเก็บลง Sanity สำเร็จแล้ว ให้แสดงหน้า Success เลย
+        }
+      }
+
       setIsSuccess(true);
     } catch (err) {
       console.error('Submission failed:', err);

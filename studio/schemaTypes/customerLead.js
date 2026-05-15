@@ -14,6 +14,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'lineId',
+      title: 'ไอดีไลน์ (Line ID)',
+      type: 'string',
+    },
+    {
       name: 'carDetails',
       title: 'รายละเอียดรถ',
       type: 'object',

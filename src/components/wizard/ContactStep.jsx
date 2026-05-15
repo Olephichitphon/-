@@ -37,6 +37,13 @@ const ContactStep = ({
           onChange={(e) => setFormData({...formData, phone: e.target.value})}
           className="rounded-2xl"
         />
+        <Input 
+          label="ไอดีไลน์ (Optional)"
+          placeholder="ระบุ Line ID เพื่อความสะดวกในการติดต่อกลับ"
+          value={formData.lineId}
+          onChange={(e) => setFormData({...formData, lineId: e.target.value})}
+          className="rounded-2xl"
+        />
       </div>
 
       <div className="p-6 bg-blue-50 rounded-3xl border border-blue-100/50">
