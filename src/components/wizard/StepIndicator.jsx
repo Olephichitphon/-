@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StepIndicator = ({ currentStep, totalSteps = 4 }) => {
+const StepIndicator = ({ currentStep, totalSteps = 3 }) => {
   return (
     <div className="flex items-center justify-between mb-12 relative px-4 max-w-md mx-auto">
       <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>

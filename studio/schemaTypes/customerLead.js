@@ -29,11 +29,6 @@ export default {
       type: 'string',
     },
     {
-      name: 'selectedPlan',
-      title: 'แผนประกันที่เลือก',
-      type: 'string',
-    },
-    {
       name: 'status',
       title: 'สถานะการติดต่อ',
       type: 'string',

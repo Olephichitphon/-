@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { getCarBrands, getCarModels, getPlansByType, writeClient } from '../lib/sanity';
+import { getCarBrands, getCarModels, writeClient } from '../lib/sanity';
 
 // Modular Components
 import StepIndicator from '../components/wizard/StepIndicator';
 import BrandSelection from '../components/wizard/BrandSelection';
 import DetailsStep from '../components/wizard/DetailsStep';
-import PlanSelectionStep from '../components/wizard/PlanSelectionStep';
 import ContactStep from '../components/wizard/ContactStep';
 import SuccessStep from '../components/wizard/SuccessStep';
 
@@ -13,7 +12,6 @@ const InsuranceWizard = () => {
   const [step, setStep] = useState(1);
   const [brands, setBrands] = useState([]);
   const [models, setModels] = useState([]);
-  const [availablePlans, setAvailablePlans] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -28,8 +26,6 @@ const InsuranceWizard = () => {
     year: '2024',
     insuranceType: '1',
     carGroup: '5',
-    selectedPlanId: '',
-    selectedPlanName: '',
     name: '',
     phone: '',
   });
@@ -70,24 +66,6 @@ const InsuranceWizard = () => {
     }
   }, [formData.brandId]);
 
-  // Fetch Plans when Step becomes 3
-  useEffect(() => {
-    if (step === 3) {
-      const fetchPlans = async () => {
-        setLoading(true);
-        try {
-          const data = await getPlansByType(formData.insuranceType, formData.carGroup, formData.year);
-          setAvailablePlans(data);
-        } catch (err) {
-          console.error('Failed to fetch plans:', err);
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchPlans();
-    }
-  }, [step, formData.insuranceType, formData.carGroup, formData.year]);
-
   const handleBrandSelect = (id, name) => {
     setFormData({ 
       ...formData, 
@@ -98,15 +76,6 @@ const InsuranceWizard = () => {
       customBrand: '',
       customModel: ''
     });
-  };
-
-  const handleSelectPlan = (plan) => {
-    setFormData({
-      ...formData,
-      selectedPlanId: plan._id,
-      selectedPlanName: plan.companyName
-    });
-    setStep(4);
   };
 
   const handleSubmit = async (e) => {
@@ -128,7 +97,6 @@ const InsuranceWizard = () => {
           isCustom: formData.brandId === 'other' || formData.modelId === 'other'
         },
         insuranceType: formData.insuranceType,
-        selectedPlan: formData.selectedPlanName || 'General Inquiry',
         status: 'new'
       };
 
@@ -160,7 +128,7 @@ const InsuranceWizard = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           
-          <StepIndicator currentStep={step} />
+          <StepIndicator currentStep={step} totalSteps={3} />
 
           <div className="bg-white p-6 md:p-16 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-white relative overflow-hidden">
             {/* Step Content */}
@@ -187,16 +155,6 @@ const InsuranceWizard = () => {
             )}
 
             {step === 3 && (
-              <PlanSelectionStep 
-                loading={loading}
-                availablePlans={availablePlans}
-                onSelectPlan={handleSelectPlan}
-                onPrev={prevStep}
-                nextStep={nextStep}
-              />
-            )}
-
-            {step === 4 && (
               <ContactStep 
                 formData={formData}
                 setFormData={setFormData}

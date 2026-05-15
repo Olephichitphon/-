@@ -44,31 +44,3 @@ export const getCarModels = async (brandId) => {
   return await client.fetch(query, { brandId });
 };
 
-export const getFeaturedPlans = async () => {
-  const query = `*[_type == "insurancePlan" && isFeatured == true] {
-    _id,
-    companyName,
-    logo,
-    planType,
-    coverage,
-    premium,
-    features
-  }`;
-  return await client.fetch(query);
-};
-
-export const getPlansByType = async (planType, carGroup) => {
-  const groupKey = `g${carGroup}`;
-
-  const query = `*[_type == "insurancePlan" && planType == $planType] {
-      _id,
-      companyName,
-      "logo": logo.asset->url,
-      planType,
-      coverage,
-      features,
-      "premium": prices[$groupKey]
-    }[defined(premium)]`;
-  
-  return await client.fetch(query, { planType, groupKey });
-};

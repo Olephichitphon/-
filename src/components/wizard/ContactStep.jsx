@@ -53,12 +53,6 @@ const ContactStep = ({
             <span className="text-lg">📋</span> 
             <strong>ประเภท:</strong> ชั้น {formData.insuranceType === '1' ? '1' : formData.insuranceType.replace('plus', '+')}
           </p>
-          {formData.selectedPlanName && (
-            <p className="flex items-center gap-2">
-              <span className="text-lg">🏆</span> 
-              <strong>สนใจแผน:</strong> {formData.selectedPlanName}
-            </p>
-          )}
         </div>
       </div>
 
