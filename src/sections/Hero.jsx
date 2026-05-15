@@ -8,21 +8,18 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Hero Background with Image & Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
           src="/website-images/hero-bg.webp" 
           alt="Insurance Background" 
-          className="w-full h-full object-cover" 
+          className="w-full h-full object-cover object-[center_25%] scale-105" 
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-slate-900"></div>
+        {/* Very light overlay to maintain text readability while showing full image */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
       </div>
 
-      <div className="container mx-auto px-4 z-10 text-center">
-        <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-orange-500/10 border border-orange-500/20 backdrop-blur-md">
-          <span className="text-orange-400 text-sm font-bold tracking-wider uppercase">
-            Fairdee Insurance By พงศกร
-          </span>
-        </div>
+      <div className="container mx-auto px-4 z-10 text-center pt-20">
+
         
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight tracking-tight">
           เช็คเบี้ยประกัน <br />
@@ -44,20 +41,31 @@ const Hero = () => {
             เช็คเบี้ยเลยตอนนี้
           </button>
           
-          <div className="flex flex-col items-start gap-1 text-left bg-white/5 backdrop-blur-xl p-4 rounded-2xl border border-white/10">
-            <div className="flex items-center gap-2 text-white font-bold">
-              <div className="flex -space-x-2">
-                {[1,2,3].map(i => (
-                  <div key={i} className="w-8 h-8 rounded-full border-2 border-slate-900 bg-orange-500 flex items-center justify-center text-[10px]">
-                    👤
-                  </div>
-                ))}
+          <div className="flex items-center gap-6 bg-white/5 backdrop-blur-xl p-4 px-8 rounded-2xl border border-white/10 shadow-2xl">
+            <a href="tel:0812345678" className="flex flex-col items-center gap-1 text-white hover:text-orange-400 transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i className="fas fa-phone text-xl"></i>
               </div>
-              <span className="ml-2 text-sm">ลูกค้ากว่า 10,000+ รายไว้วางใจ</span>
-            </div>
-            <div className="flex items-center gap-1 text-orange-400 text-xs">
-              {"★★★★★"} <span className="text-gray-400 ml-1">รีวิวระดับ 5 ดาว</span>
-            </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest opacity-60 group-hover:opacity-100">โทรเลย</span>
+            </a>
+
+            <div className="w-[1px] h-8 bg-white/10"></div>
+
+            <a href="https://line.me/ti/p/~yourid" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 text-[#00c300] hover:scale-110 transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-full bg-[#00c300]/10 flex items-center justify-center">
+                <i className="fab fa-line text-2xl"></i>
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest opacity-60 group-hover:opacity-100">Line ID</span>
+            </a>
+
+            <div className="w-[1px] h-8 bg-white/10"></div>
+
+            <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 text-[#1877f2] hover:scale-110 transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-full bg-[#1877f2]/10 flex items-center justify-center">
+                <i className="fab fa-facebook-f text-2xl"></i>
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest opacity-60 group-hover:opacity-100">Facebook</span>
+            </a>
           </div>
         </div>
       </div>
