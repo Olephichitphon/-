@@ -24,7 +24,7 @@ const Hero = () => {
           กรอกข้อมูลง่ายๆ แล้วรอรับข้อเสนอที่ดีที่สุดได้เลย
         </p>
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <Button onClick={scrollToWizard} className="text-lg px-10 py-4">
+          <Button onClick={scrollToWizard} variant="accent" className="text-lg px-10 py-4">
             เช็คเบี้ยเลยตอนนี้
           </Button>
           <div className="flex items-center gap-2 text-sm text-slate-500">

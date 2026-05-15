@@ -86,7 +86,7 @@ const DetailsStep = ({
             <select 
               value={formData.insuranceType}
               onChange={(e) => setFormData({...formData, insuranceType: e.target.value})}
-              className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all bg-white cursor-pointer appearance-none"
+              className="w-full p-4 border-2 border-slate-100 rounded-2xl outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all bg-white cursor-pointer appearance-none"
             >
               <option value="1">ชั้น 1</option>
               <option value="2plus">ชั้น 2+</option>
@@ -101,10 +101,11 @@ const DetailsStep = ({
         <Button onClick={onPrev} variant="secondary" className="flex-1 py-4 rounded-2xl">กลับ</Button>
         <Button 
           onClick={onNext} 
+          variant="accent"
           disabled={!(formData.modelId || isOtherModel)}
-          className="flex-1 py-4 rounded-2xl shadow-lg shadow-blue-100"
+          className="flex-1 py-4 rounded-2xl shadow-lg shadow-orange-100"
         >
-          ค้นหาแผนประกัน
+          ถัดไป
         </Button>
       </div>
     </div>

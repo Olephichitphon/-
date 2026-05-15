@@ -66,7 +66,7 @@ const BrandSelection = ({
             onClick={() => onBrandSelect(brand.placeholder ? 'other' : brand._id, brand.placeholder ? brand.name : brand.name)}
             className={`group relative flex flex-col items-center justify-center p-4 rounded-2xl transition-all duration-300 border-2
               ${selectedBrandId === brand._id 
-                ? 'border-blue-500 bg-blue-50 shadow-md scale-105' 
+                ? 'border-orange-500 bg-orange-50 shadow-md scale-105' 
                 : 'border-transparent bg-slate-50 hover:bg-white hover:shadow-xl hover:border-slate-100'}`}
           >
             <div className="w-full h-24 mb-2 flex items-center justify-center overflow-hidden rounded-xl bg-slate-100 transition-all duration-300">
@@ -82,7 +82,7 @@ const BrandSelection = ({
                 </div>
               )}
             </div>
-            <span className={`text-[10px] font-black tracking-widest mt-auto pb-1 transition-colors ${selectedBrandId === brand._id ? 'text-blue-600' : 'text-slate-400 group-hover:text-slate-900'}`}>
+            <span className={`text-[10px] font-black tracking-widest mt-auto pb-1 transition-colors ${selectedBrandId === brand._id ? 'text-orange-600' : 'text-slate-400 group-hover:text-slate-900'}`}>
               {brand.name.toUpperCase()}
             </span>
           </button>
@@ -126,8 +126,9 @@ const BrandSelection = ({
             )}
             <Button 
               onClick={onNext}
+              variant="accent"
               disabled={isOtherBrand && !formData.customBrand}
-              className="w-full py-4 rounded-2xl shadow-lg shadow-blue-100 font-bold"
+              className="w-full py-4 rounded-2xl shadow-lg shadow-orange-100 font-bold"
             >
               ถัดไป
             </Button>

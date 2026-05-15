@@ -7,6 +7,7 @@ const Button = ({ children, onClick, type = 'button', variant = 'primary', class
     primary: 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200',
     secondary: 'bg-white text-blue-600 border border-blue-100 hover:bg-blue-50',
     outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50',
+    accent: 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg shadow-orange-200',
     success: 'bg-green-600 text-white hover:bg-green-700 shadow-lg shadow-green-200',
   };
 

@@ -119,7 +119,7 @@ const InsuranceWizard = () => {
             body: JSON.stringify({
               access_key: web3formsAccessKey,
               subject: `แจ้งเตือนลูกค้าใหม่: ${formData.name}`,
-              from_name: "ระบบประกันภัยออนไลน์",
+              from_name: "Fairdee Insurance Broker By พงศกร",
               "ชื่อลูกค้า": formData.name,
               "เบอร์โทรศัพท์": formData.phone,
               "ไอดีไลน์": formData.lineId || '-',

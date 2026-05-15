@@ -67,9 +67,9 @@ const ContactStep = ({
         <Button onClick={onPrev} variant="secondary" className="flex-1 py-4 rounded-2xl">กลับ</Button>
         <Button 
           type="submit" 
-          variant="success" 
+          variant="accent" 
           disabled={submitting || !formData.name || !formData.phone}
-          className="flex-1 py-4 rounded-2xl shadow-xl shadow-green-100 font-bold text-lg"
+          className="flex-1 py-4 rounded-2xl shadow-xl shadow-orange-100 font-bold text-lg"
         >
           {submitting ? (
             <span className="flex items-center justify-center gap-2">
