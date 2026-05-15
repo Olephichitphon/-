@@ -16,6 +16,22 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Chonburi', serif;
 }
 
+@layer utilities {
+  @keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(100vw);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .animate-fade-in-right {
+    animation: fade-in-right 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
 @layer components {
   .btn-primary {
     @apply px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold transition-all hover:bg-blue-700 active:scale-95 shadow-lg shadow-blue-200;

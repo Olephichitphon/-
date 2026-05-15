@@ -22,14 +22,14 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Left Content */}
           <div className="max-w-4xl md:max-w-2xl lg:max-w-[600px]">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-10 leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-10 leading-tight tracking-tight animate-fade-in-right">
               เช็คเบี้ยประกัน <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
                 ในราคาที่ดีที่สุด
               </span>
             </h1>
             
-            <div className="flex flex-col md:flex-row gap-6 justify-center md:justify-start items-center md:items-stretch mb-10">
+            <div className="flex flex-col md:flex-row gap-6 justify-center md:justify-start items-center md:items-stretch mb-10 animate-fade-in-right" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <button 
                 onClick={scrollToWizard} 
                 className="neon-border-btn text-white px-12 py-5 rounded-full text-xl font-black shadow-2xl shadow-orange-500/40 hover:scale-110 active:scale-95 transition-all duration-300"
@@ -39,7 +39,7 @@ const Hero = () => {
             </div>
 
             {/* Branding & Contact Combined Badge - Responsive */}
-            <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6 bg-white/5 backdrop-blur-md p-4 lg:p-2 lg:pr-8 rounded-3xl lg:rounded-full border border-white/10 w-full lg:w-fit hover:bg-white/10 transition-all duration-300 group">
+            <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6 bg-white/5 backdrop-blur-md p-4 lg:p-2 lg:pr-8 rounded-3xl lg:rounded-full border border-white/10 w-full lg:w-fit hover:bg-white/10 transition-all duration-300 group animate-fade-in-right" style={{ animationDelay: '0.8s', opacity: 0 }}>
               <div className="flex items-center gap-4 lg:pl-2">
                 <img
                   src="/website-images/fairdee-circle.png"
