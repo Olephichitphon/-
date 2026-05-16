@@ -149,20 +149,39 @@ const ContactStep = ({
         }
       `}</style>
 
-      <div className="flex gap-4 pt-4">
+      {/* Validation Warning */}
+      {(!isNameValid || !isPhoneValid) && (
+        <div className="bg-red-50 border border-red-100 rounded-2xl p-4 flex items-center gap-3 animate-pulse">
+          <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <i className="fas fa-exclamation-triangle text-red-500 text-xs"></i>
+          </div>
+          <p className="text-xs font-bold text-red-700 leading-tight">
+            <span className="block mb-0.5">กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง:</span>
+            {!isNameValid && <span className="mr-2">• ชื่อ-นามสกุล (ห้ามมีตัวเลข)</span>}
+            {!isPhoneValid && <span>• เบอร์โทรศัพท์ (10 หลัก)</span>}
+          </p>
+        </div>
+      )}
+
+      <div className="flex gap-4 pt-2">
         <Button onClick={onPrev} variant="secondary" className="flex-1 py-4 rounded-2xl">กลับ</Button>
         <Button 
           type="submit" 
           variant="accent" 
           disabled={submitting || !isNameValid || !isPhoneValid}
-          className={`flex-1 py-4 rounded-2xl shadow-xl font-bold text-lg transition-all ${(!isNameValid || !isPhoneValid) ? 'opacity-50 grayscale' : 'shadow-orange-100'}`}
+          className={`flex-1 py-4 rounded-2xl shadow-xl font-bold text-lg transition-all ${(!isNameValid || !isPhoneValid) ? 'opacity-50 grayscale cursor-not-allowed scale-95' : 'shadow-orange-100 hover:scale-105 active:scale-95'}`}
         >
           {submitting ? (
             <span className="flex items-center justify-center gap-2">
               <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
               กำลังส่ง...
             </span>
-          ) : 'ส่งข้อมูลทันที'}
+          ) : (
+            <span className="flex items-center justify-center gap-2">
+              <i className="fas fa-paper-plane text-sm"></i>
+              ส่งข้อมูลทันที
+            </span>
+          )}
         </Button>
       </div>
     </form>
