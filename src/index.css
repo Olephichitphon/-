@@ -54,3 +54,12 @@ h1, h2, h3, h4, h5, h6 {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes zoom-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.animate-zoom-pulse {
+  animation: zoom-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
