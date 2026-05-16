@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getCarBrands, getCarModels, writeClient } from '../lib/sanity';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 // Modular Components
 import StepIndicator from '../components/wizard/StepIndicator';
@@ -9,6 +10,7 @@ import ContactStep from '../components/wizard/ContactStep';
 import SuccessStep from '../components/wizard/SuccessStep';
 
 const InsuranceWizard = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [step, setStep] = useState(1);
   const [brands, setBrands] = useState([]);
   const [models, setModels] = useState([]);
@@ -16,6 +18,9 @@ const InsuranceWizard = () => {
   const [submitting, setSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const wizardRef = useRef(null);
+
+  // Rate Limiting Config (1 minute)
+  const SUBMISSION_COOLDOWN = 60 * 1000;
 
   // Scroll to top of wizard when step changes
   useEffect(() => {
@@ -98,9 +103,28 @@ const InsuranceWizard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // 1. Client-side Rate Limiting Check
+    const lastSubmission = localStorage.getItem('last_insurance_submission');
+    const now = Date.now();
+    
+    if (lastSubmission && (now - parseInt(lastSubmission)) < SUBMISSION_COOLDOWN) {
+      const remainingSeconds = Math.ceil((SUBMISSION_COOLDOWN - (now - parseInt(lastSubmission))) / 1000);
+      alert(`กรุณารอสักครู่ (อีก ${remainingSeconds} วินาที) ก่อนส่งข้อมูลใหม่อีกครั้ง เพื่อป้องกันข้อมูลซ้ำซ้อน`);
+      return;
+    }
+
+    if (!executeRecaptcha) {
+      alert('ระบบความปลอดภัยยังไม่พร้อม กรุณาลองใหม่อีกครั้งในภายหลัง');
+      return;
+    }
+
     setSubmitting(true);
 
     try {
+      // 2. Generate reCAPTCHA Token
+      const captchaToken = await executeRecaptcha('insurance_lead');
+
       const finalBrand = formData.brandId === 'other' ? formData.customBrand : formData.brandName;
       const finalModel = formData.modelId === 'other' ? formData.customModel : formData.modelName;
 
@@ -116,10 +140,17 @@ const InsuranceWizard = () => {
           isCustom: formData.brandId === 'other' || formData.modelId === 'other'
         },
         insuranceType: formData.insuranceType,
-        status: 'new'
+        status: 'new',
+        security: {
+          captchaToken: captchaToken,
+          submittedAt: new Date().toISOString()
+        }
       };
 
       await writeClient.create(leadDoc);
+
+      // Store submission time for Rate Limiting
+      localStorage.setItem('last_insurance_submission', Date.now().toString());
 
       // ------------------------------------------
       // Send Email Notification via Web3Forms
