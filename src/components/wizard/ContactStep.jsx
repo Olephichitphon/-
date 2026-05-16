@@ -12,6 +12,27 @@ const ContactStep = ({
   const isOtherBrand = formData.brandId === 'other';
   const isOtherModel = formData.modelId === 'other';
 
+  // Validation Regex
+  const phoneRegex = /^0[0-9]{9}$/;
+  const nameRegex = /^[a-zA-Z\u0E00-\u0E7F\s.]+$/;
+
+  const isPhoneValid = phoneRegex.test(formData.phone);
+  const isNameValid = formData.name.trim().length >= 2 && nameRegex.test(formData.name);
+
+  const handlePhoneChange = (e) => {
+    // Only allow numbers and limit to 10 digits
+    const value = e.target.value.replace(/[^0-9]/g, '').slice(0, 10);
+    setFormData({ ...formData, phone: value });
+  };
+
+  const handleNameChange = (e) => {
+    // Only allow letters, spaces, and dots
+    const value = e.target.value;
+    if (value === '' || nameRegex.test(value)) {
+      setFormData({ ...formData, name: value });
+    }
+  };
+
   return (
     <form onSubmit={onSubmit} className="space-y-8 animate-fade-in max-w-lg mx-auto">
       <div className="text-center">
@@ -20,23 +41,35 @@ const ContactStep = ({
       </div>
 
       <div className="space-y-5">
-        <Input 
-          label="ชื่อ-นามสกุล"
-          placeholder="กรอกชื่อและนามสกุล"
-          required
-          value={formData.name}
-          onChange={(e) => setFormData({...formData, name: e.target.value})}
-          className="rounded-2xl"
-        />
-        <Input 
-          label="เบอร์โทรศัพท์"
-          placeholder="08X-XXX-XXXX"
-          type="tel"
-          required
-          value={formData.phone}
-          onChange={(e) => setFormData({...formData, phone: e.target.value})}
-          className="rounded-2xl"
-        />
+        <div>
+          <Input 
+            label="ชื่อ-นามสกุล"
+            placeholder="กรอกชื่อและนามสกุล"
+            required
+            value={formData.name}
+            onChange={handleNameChange}
+            className={`rounded-2xl transition-all ${formData.name && !isNameValid ? 'border-red-400 bg-red-50' : ''}`}
+          />
+          {formData.name && !isNameValid && (
+            <p className="text-[10px] text-red-500 mt-1 ml-2 font-bold uppercase tracking-tight">รูปแบบชื่อไม่ถูกต้อง (ห้ามมีตัวเลข)</p>
+          )}
+        </div>
+
+        <div>
+          <Input 
+            label="เบอร์โทรศัพท์"
+            placeholder="08XXXXXXXX"
+            type="tel"
+            required
+            value={formData.phone}
+            onChange={handlePhoneChange}
+            className={`rounded-2xl transition-all ${formData.phone && !isPhoneValid ? 'border-red-400 bg-red-50' : ''}`}
+          />
+          {formData.phone && !isPhoneValid && (
+            <p className="text-[10px] text-red-500 mt-1 ml-2 font-bold uppercase tracking-tight">กรุณากรอกเบอร์โทรให้ครบ 10 หลัก (เช่น 0812345678)</p>
+          )}
+        </div>
+
         <Input 
           label="ไอดีไลน์ (Optional)"
           placeholder="ระบุ Line ID เพื่อความสะดวกในการติดต่อกลับ"
@@ -68,8 +101,8 @@ const ContactStep = ({
         <Button 
           type="submit" 
           variant="accent" 
-          disabled={submitting || !formData.name || !formData.phone}
-          className="flex-1 py-4 rounded-2xl shadow-xl shadow-orange-100 font-bold text-lg"
+          disabled={submitting || !isNameValid || !isPhoneValid}
+          className={`flex-1 py-4 rounded-2xl shadow-xl font-bold text-lg transition-all ${(!isNameValid || !isPhoneValid) ? 'opacity-50 grayscale' : 'shadow-orange-100'}`}
         >
           {submitting ? (
             <span className="flex items-center justify-center gap-2">
