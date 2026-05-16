@@ -2,6 +2,10 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import InsuranceWizard from './sections/InsuranceWizard';
+import Promotions from './sections/Promotions';
+import Reviews from './sections/Reviews';
+import Articles from './sections/Articles';
+import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
@@ -16,6 +20,10 @@ function App() {
         <Navbar />
         <Hero />
         <InsuranceWizard />
+        <Promotions />
+        <Reviews />
+        <Articles />
+        <Contact />
         <Footer />
       </div>
     </GoogleReCaptchaProvider>
