@@ -160,7 +160,10 @@ const InsuranceWizard = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           
-          <StepIndicator currentStep={step} totalSteps={3} />
+          {/* Sticky Step Indicator Wrapper */}
+          <div className="sticky top-20 z-30 pt-4 pb-2 bg-slate-50/80 backdrop-blur-md -mx-4 px-4 transition-all duration-300">
+            <StepIndicator currentStep={step} totalSteps={3} />
+          </div>
 
           <div className="bg-white p-6 md:p-16 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-white relative overflow-hidden">
             {/* Step Content */}
