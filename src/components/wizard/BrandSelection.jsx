@@ -73,7 +73,7 @@ const BrandSelection = ({
         {popularBrands.map((brand) => (
           <button
             key={brand._id}
-            onClick={() => onBrandSelect(brand.placeholder ? 'other' : brand._id, brand.placeholder ? brand.name : brand.name)}
+            onClick={() => onBrandSelect(brand.placeholder ? 'other' : brand._id, brand.name, brand.logoUrl)}
             className={`group relative flex flex-col items-center justify-center p-4 rounded-2xl transition-all duration-300 border-2
               ${selectedBrandId === brand._id 
                 ? 'border-orange-500 bg-orange-50 shadow-md scale-105' 
@@ -106,8 +106,8 @@ const BrandSelection = ({
             value={selectedBrandId || ''}
             onChange={(e) => {
               const id = e.target.value;
-              const name = brands.find(b => b._id === id)?.name || '';
-              onBrandSelect(id, name);
+              const brand = brands.find(b => b._id === id);
+              onBrandSelect(id, brand?.name || '', brand?.logoUrl || '');
             }}
             className="w-full p-4 pl-6 pr-12 appearance-none bg-white border-2 border-blue-100 rounded-2xl text-slate-700 font-medium focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition-all cursor-pointer"
           >

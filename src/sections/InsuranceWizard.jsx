@@ -44,6 +44,7 @@ const InsuranceWizard = () => {
     name: '',
     phone: '',
     lineId: '',
+    brandLogo: '',
   });
 
   // Fetch Brands on Mount
@@ -82,11 +83,12 @@ const InsuranceWizard = () => {
     }
   }, [formData.brandId]);
 
-  const handleBrandSelect = (id, name) => {
+  const handleBrandSelect = (id, name, logoUrl) => {
     setFormData({ 
       ...formData, 
       brandId: id, 
       brandName: name,
+      brandLogo: logoUrl || '',
       modelId: '',
       modelName: '',
       customBrand: '',
