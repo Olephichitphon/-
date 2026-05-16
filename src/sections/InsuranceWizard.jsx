@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getCarBrands, getCarModels, writeClient } from '../lib/sanity';
 
 // Modular Components
@@ -15,6 +15,21 @@ const InsuranceWizard = () => {
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const wizardRef = useRef(null);
+
+  // Scroll to top of wizard when step changes
+  useEffect(() => {
+    if (step > 1) {
+      const offset = 100; // Account for sticky header
+      const elementPosition = wizardRef.current?.getBoundingClientRect().top;
+      const offsetPosition = (elementPosition || 0) + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, [step]);
   
   const [formData, setFormData] = useState({
     brandId: '',
@@ -156,7 +171,7 @@ const InsuranceWizard = () => {
   }
 
   return (
-    <section className="py-20 bg-slate-50 min-h-screen" id="check-premium">
+    <section className="py-20 bg-slate-50 min-h-screen scroll-mt-24" id="check-premium" ref={wizardRef}>
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           
