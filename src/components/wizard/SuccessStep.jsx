@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../Button';
 
 const SuccessStep = () => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const element = document.getElementById('success-card');
+      if (element) {
+        const offset = 100; // Offset to see the full card properly
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="py-12 animate-fade-in text-center md:text-left">
+    <div id="success-card" className="py-12 animate-fade-in text-center md:text-left">
       <div className="bg-white rounded-[3.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.06)] max-w-xl md:max-w-4xl mx-auto border border-slate-100 overflow-hidden group flex flex-col md:flex-row min-h-[500px]">
         
         {/* Left Side: Hero Image Banner (Desktop) / Top Banner (Mobile) */}
