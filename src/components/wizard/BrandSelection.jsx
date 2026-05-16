@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Input from '../Input';
 import Button from '../Button';
 
@@ -11,7 +11,17 @@ const BrandSelection = ({
   onNext
 }) => {
   const selectedBrandId = formData.brandId;
+  const bottomRef = useRef(null);
   
+  // Auto-scroll to bottom when a brand is selected
+  useEffect(() => {
+    if (selectedBrandId) { // Enable for all devices
+      setTimeout(() => {
+        bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+  }, [selectedBrandId]);
+
   // Common brands that we want to show in the grid
   const popularBrandNames = [
     'Toyota', 'Honda', 'Mazda', 'Nissan', 'Isuzu', 
@@ -90,7 +100,7 @@ const BrandSelection = ({
       </div>
 
       {/* Other Brands Dropdown & Custom Input */}
-      <div className="max-w-md mx-auto space-y-4 pt-4">
+      <div className="max-w-md mx-auto space-y-4 pt-4" ref={bottomRef}>
         <div className="relative">
           <select
             value={selectedBrandId || ''}
