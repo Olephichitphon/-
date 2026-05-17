@@ -141,6 +141,35 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
+      {/* Self-contained High-Performance GPU CSS Animation Stylesheet */}
+      <style>{`
+        @keyframes card-float-wave {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+        .animate-card-float-wave {
+          animation: card-float-wave 4s infinite ease-in-out;
+        }
+        @keyframes shimmer-wave {
+          0% {
+            transform: translateX(-180%) skewX(-15deg);
+          }
+          30% {
+            transform: translateX(180%) skewX(-15deg);
+          }
+          100% {
+            transform: translateX(180%) skewX(-15deg);
+          }
+        }
+        .animate-shimmer-wave {
+          animation: shimmer-wave 6s infinite ease-in-out;
+        }
+      `}</style>
+
       {/* Hero Background with Image & Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
@@ -281,26 +310,41 @@ const Hero = () => {
               {features.map((item, index) => (
                 <div 
                   key={index} 
-                  className={`group relative transform bg-white border border-white hover:border-orange-500/40 rounded-3xl p-6 flex flex-col items-center text-center shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.2)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 cursor-pointer ${
+                  className={`animate-card-float-wave ${
                     index === 4 ? 'col-span-2 lg:col-span-1 max-w-md mx-auto w-full lg:max-w-none' : ''
                   }`}
+                  style={{ 
+                    animationDelay: `${index * 0.4}s`,
+                    willChange: 'transform' // GPU optimized
+                  }}
                 >
-                  {/* Glowing Radial Light Behind Icon */}
-                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl z-0 pointer-events-none"></div>
+                  <div className="group relative transform bg-white border border-white hover:border-orange-500/40 rounded-3xl p-6 flex flex-col items-center text-center shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.2)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 cursor-pointer overflow-hidden h-full">
+                    {/* Highly Visible Gold/Orange Shimmer Wave reflection sweep */}
+                    <div 
+                      className="absolute inset-y-0 left-0 w-[80%] h-full bg-gradient-to-r from-transparent via-orange-500/20 to-transparent pointer-events-none z-0 animate-shimmer-wave" 
+                      style={{ 
+                        animationDelay: `${index * 0.5}s`,
+                        willChange: 'transform' // GPU optimized
+                      }}
+                    />
 
-                  {/* Glowing SVG Icon Container */}
-                  <div className="w-16 h-16 rounded-2xl bg-orange-500/5 border border-orange-500/10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all duration-300 z-10">
-                    {item.icon}
+                    {/* Glowing Radial Light Behind Icon */}
+                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl z-0 pointer-events-none"></div>
+
+                    {/* Glowing SVG Icon Container */}
+                    <div className="w-16 h-16 rounded-2xl bg-orange-500/5 border border-orange-500/10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all duration-300 z-10">
+                      {item.icon}
+                    </div>
+
+                    {/* Premium dark corporate navy text */}
+                    <h3 className="text-lg font-extrabold text-[#113583] mb-2 tracking-wide z-10 group-hover:text-orange-500 transition-colors">
+                      {item.title}
+                    </h3>
+                    
+                    <p className="text-xs font-semibold text-gray-500 group-hover:text-gray-700 transition-colors z-10">
+                      {item.subtitle}
+                    </p>
                   </div>
-
-                  {/* Premium dark corporate navy text */}
-                  <h3 className="text-lg font-extrabold text-[#113583] mb-2 tracking-wide z-10 group-hover:text-orange-500 transition-colors">
-                    {item.title}
-                  </h3>
-                  
-                  <p className="text-xs font-semibold text-gray-500 group-hover:text-gray-700 transition-colors z-10">
-                    {item.subtitle}
-                  </p>
                 </div>
               ))}
             </div>
