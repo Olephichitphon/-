@@ -197,10 +197,11 @@ const Hero = () => {
               เปรียบเทียบราคาจากบริษัทประกันชั้นนำกว่า 20 แห่ง พร้อมผ่อน 0% และมีผู้เชี่ยวชาญช่วยดูแล
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center md:justify-start items-center mb-10 animate-fade-in-right" style={{ animationDelay: '0.4s', opacity: 0 }}>
+            {/* Highly Optimized Sleek, Responsive Hero Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center md:justify-start items-center w-full max-w-[500px] sm:max-w-none mb-10 animate-fade-in-right" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <button 
                 onClick={scrollToWizard} 
-                className="neon-border-btn text-white px-12 py-5 rounded-full text-xl font-black shadow-2xl shadow-orange-500/40 hover:scale-110 active:scale-95 transition-all duration-300 w-full sm:w-auto text-center"
+                className="neon-border-btn text-white px-6 py-4 sm:px-12 sm:py-5 rounded-full text-base sm:text-xl font-black shadow-2xl shadow-orange-500/40 hover:scale-110 active:scale-95 transition-all duration-300 w-full sm:w-auto text-center whitespace-nowrap"
               >
                 เช็คเบี้ยฟรีทันที
               </button>
@@ -209,9 +210,9 @@ const Hero = () => {
                 href="https://line.me/ti/p/~yourid" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 border-2 border-[#06C755] text-[#06C755] hover:text-white hover:bg-[#06C755] hover:shadow-[#06C755]/30 shadow-lg px-12 py-5 rounded-full text-xl font-black bg-transparent hover:scale-110 active:scale-95 transition-all duration-300 w-full sm:w-auto text-center"
+                className="flex items-center justify-center gap-2 border-2 border-[#06C755] text-[#06C755] hover:text-white hover:bg-[#06C755] hover:shadow-[#06C755]/30 shadow-lg px-6 py-4 sm:px-12 sm:py-5 rounded-full text-base sm:text-xl font-black bg-transparent hover:scale-110 active:scale-95 transition-all duration-300 w-full sm:w-auto text-center whitespace-nowrap"
               >
-                <i className="fab fa-line text-2xl mr-1"></i>
+                <i className="fab fa-line text-xl sm:text-2xl"></i>
                 แอด LINE เพื่อรับราคา
               </a>
             </div>
