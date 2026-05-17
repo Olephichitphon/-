@@ -31,15 +31,15 @@ const doubled = [...partners, ...partners];
 
 export default function LogoMarquee() {
   return (
-    <section className="logo-marquee-section">
+    <section className="logo-marquee-section" style={{ border: 'none', borderTop: 'none', borderBottom: 'none', boxShadow: 'none' }}>
       <style>{`
         .logo-marquee-section {
           background: #fff;
           padding: 36px 0 28px;
-          border-top: 1px solid #f1f5f9;
-          border-bottom: 1px solid #f1f5f9;
           overflow: hidden;
           position: relative;
+          margin-top: -3px;
+          z-index: 10;
         }
 
         .logo-marquee-label {
