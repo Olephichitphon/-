@@ -281,21 +281,22 @@ const Hero = () => {
               {features.map((item, index) => (
                 <div 
                   key={index} 
-                  className="group relative transform bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-orange-500/40 rounded-3xl p-6 flex flex-col items-center text-center shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.3)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 cursor-pointer"
+                  className="group relative transform bg-white border border-white hover:border-orange-500/40 rounded-3xl p-6 flex flex-col items-center text-center shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.2)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 cursor-pointer"
                 >
                   {/* Glowing Radial Light Behind Icon */}
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl z-0 pointer-events-none"></div>
 
                   {/* Glowing SVG Icon Container */}
-                  <div className="w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all duration-300 z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-orange-500/5 border border-orange-500/10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all duration-300 z-10">
                     {item.icon}
                   </div>
 
-                  <h3 className="text-lg font-extrabold text-white mb-2 tracking-wide z-10 group-hover:text-orange-400 transition-colors">
+                  {/* Premium dark corporate navy text */}
+                  <h3 className="text-lg font-extrabold text-[#113583] mb-2 tracking-wide z-10 group-hover:text-orange-500 transition-colors">
                     {item.title}
                   </h3>
                   
-                  <p className="text-xs font-semibold text-gray-300 group-hover:text-gray-100 transition-colors z-10">
+                  <p className="text-xs font-semibold text-gray-500 group-hover:text-gray-700 transition-colors z-10">
                     {item.subtitle}
                   </p>
                 </div>
@@ -305,7 +306,6 @@ const Hero = () => {
         </div>
 
         {/* SVG Bottom Wave Divider to transition into white marquee */}
-        {/* Added bg-[#113583] to fully cover transparent region above the white wave with royal blue color */}
         <div className="w-full overflow-visible leading-none -translate-y-[1px] bg-[#113583]">
           <svg className="relative block w-full h-[40px] md:h-[60px] overflow-visible" viewBox="0 0 1200 120" preserveAspectRatio="none">
             {/* Layer 1: Main White Wave */}
