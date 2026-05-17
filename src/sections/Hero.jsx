@@ -5,8 +5,142 @@ const Hero = () => {
     document.getElementById('check-premium')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const features = [
+    {
+      title: 'บริษัทประกันชั้นนำ',
+      subtitle: 'กว่า 20 แห่ง',
+      icon: (
+        <svg 
+          width="32" 
+          height="32" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="url(#og-grad-1)" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+        >
+          <defs>
+            <linearGradient id="og-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fb923c" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
+          </defs>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      )
+    },
+    {
+      title: 'ผ่อน 0%',
+      subtitle: 'นานสูงสุด 10 เดือน',
+      icon: (
+        <svg 
+          width="32" 
+          height="32" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="url(#og-grad-2)" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+        >
+          <defs>
+            <linearGradient id="og-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fb923c" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
+          </defs>
+          <line x1="19" y1="5" x2="5" y2="19"></line>
+          <circle cx="6.5" cy="6.5" r="2.5"></circle>
+          <circle cx="17.5" cy="17.5" r="2.5"></circle>
+        </svg>
+      )
+    },
+    {
+      title: 'ผู้เชี่ยวชาญดูแล',
+      subtitle: 'ตลอดการทำประกัน',
+      icon: (
+        <svg 
+          width="32" 
+          height="32" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="url(#og-grad-3)" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+        >
+          <defs>
+            <linearGradient id="og-grad-3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fb923c" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
+          </defs>
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+        </svg>
+      )
+    },
+    {
+      title: 'มั่นใจ ปลอดภัย',
+      subtitle: 'ข้อมูลไม่รั่วไหล',
+      icon: (
+        <svg 
+          width="32" 
+          height="32" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="url(#og-grad-4)" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+        >
+          <defs>
+            <linearGradient id="og-grad-4" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fb923c" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
+          </defs>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <polyline points="9 15 11 17 15 13"></polyline>
+        </svg>
+      )
+    },
+    {
+      title: 'บริการรวดเร็ว',
+      subtitle: 'ภายใน 1 นาที',
+      icon: (
+        <svg 
+          width="32" 
+          height="32" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="url(#og-grad-5)" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+        >
+          <defs>
+            <linearGradient id="og-grad-5" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fb923c" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
+          </defs>
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      )
+    }
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
       {/* Hero Background with Image & Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
@@ -18,10 +152,11 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 z-10 text-center md:text-left pt-32 pb-20 relative">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+      {/* Hero Content Section */}
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 z-10 text-center md:text-left pt-36 pb-20 relative flex-grow flex items-center">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 w-full">
           {/* Left Content */}
-          <div className="max-w-4xl md:max-w-2xl lg:max-w-[750px] flex flex-col items-center md:items-start">
+          <div className="max-w-4xl md:max-w-2xl lg:max-w-[750px] flex flex-col items-center md:items-start w-full">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tight animate-fade-in-right">
               เช็คเบี้ยประกันรถ <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
@@ -69,7 +204,6 @@ const Hero = () => {
                 </div>
               ))}
             </div>
-
 
             {/* Branding & Contact Combined Badge - Responsive */}
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6 bg-white/5 backdrop-blur-md p-4 lg:p-2 lg:pr-8 rounded-3xl lg:rounded-full border border-white/10 w-full lg:w-fit hover:bg-white/10 transition-all duration-300 group animate-fade-in-right" style={{ animationDelay: '0.8s', opacity: 0 }}>
@@ -120,9 +254,74 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/30">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+      {/* SVG Wave Divider & Feature Grid Section */}
+      <div className="w-full relative z-10 mt-auto">
+        {/* SVG Top Wave Divider */}
+        <div className="w-full overflow-visible leading-none translate-y-[2px]">
+          <svg className="relative block w-full h-[40px] md:h-[60px] overflow-visible" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            {/* Layer 1: Main Deep Royal Blue Wave */}
+            <path 
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C26.9,4.75,57.05,12,88.43,18.39,168.06,34.52,250.27,46.74,321.39,56.44Z" 
+              fill="#113583"
+            ></path>
+            {/* Layer 2: Perfectly Uniform Orange Stroke Line with doubled thickness (16px) */}
+            <path
+              d="M0,0C26.9,4.75,57.05,12,88.43,18.39,168.06,34.52,250.27,46.74,321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3"
+              fill="none"
+              stroke="#ff8a00"
+              strokeWidth="16"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Feature Grid Container - Royal Blue Theme */}
+        <div className="bg-[#113583] pt-10 pb-16 relative">
+          <div className="container mx-auto px-6 max-w-7xl">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {features.map((item, index) => (
+                <div 
+                  key={index} 
+                  className="group relative transform bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-orange-500/40 rounded-3xl p-6 flex flex-col items-center text-center shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.3)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 cursor-pointer"
+                >
+                  {/* Glowing Radial Light Behind Icon */}
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl z-0 pointer-events-none"></div>
+
+                  {/* Glowing SVG Icon Container */}
+                  <div className="w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all duration-300 z-10">
+                    {item.icon}
+                  </div>
+
+                  <h3 className="text-lg font-extrabold text-white mb-2 tracking-wide z-10 group-hover:text-orange-400 transition-colors">
+                    {item.title}
+                  </h3>
+                  
+                  <p className="text-xs font-semibold text-gray-300 group-hover:text-gray-100 transition-colors z-10">
+                    {item.subtitle}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* SVG Bottom Wave Divider to transition into white marquee */}
+        {/* Added bg-[#113583] to fully cover transparent region above the white wave with royal blue color */}
+        <div className="w-full overflow-visible leading-none -translate-y-[1px] bg-[#113583]">
+          <svg className="relative block w-full h-[40px] md:h-[60px] overflow-visible" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            {/* Layer 1: Main White Wave */}
+            <path 
+              d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" 
+              className="fill-white"
+            ></path>
+            {/* Layer 2: Perfectly Uniform Orange Stroke Line with doubled thickness (16px) */}
+            <path
+              d="M1200,95.8C1132.19,118.92,1055.71,111.31,985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35"
+              fill="none"
+              stroke="#ff8a00"
+              strokeWidth="16"
+            ></path>
+          </svg>
+        </div>
       </div>
     </section>
   );
