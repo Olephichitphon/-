@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
+import LogoMarquee from './sections/LogoMarquee';
 import InsuranceWizard from './sections/InsuranceWizard';
 import Promotions from './sections/Promotions';
 import Reviews from './sections/Reviews';
@@ -19,6 +20,7 @@ function App() {
       <div className="min-h-screen">
         <Navbar />
         <Hero />
+        <LogoMarquee />
         <InsuranceWizard />
         <Promotions />
         <Reviews />
