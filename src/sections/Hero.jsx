@@ -21,22 +21,55 @@ const Hero = () => {
       <div className="container mx-auto px-6 md:px-12 lg:px-24 z-10 text-center md:text-left pt-32 pb-20 relative">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Left Content */}
-          <div className="max-w-4xl md:max-w-2xl lg:max-w-[600px]">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-10 leading-tight tracking-tight animate-fade-in-right">
-              เช็คเบี้ยประกัน <br />
+          <div className="max-w-4xl md:max-w-2xl lg:max-w-[750px] flex flex-col items-center md:items-start">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tight animate-fade-in-right">
+              เช็คเบี้ยประกันรถ <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-                ในราคาที่ดีที่สุด
+                ฟรีใน 1 นาที
               </span>
             </h1>
+
+            <p className="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed max-w-[600px] mx-auto md:mx-0 animate-fade-in-right" style={{ animationDelay: '0.2s', opacity: 0 }}>
+              เปรียบเทียบราคาจากบริษัทประกันชั้นนำกว่า 20 แห่ง พร้อมผ่อน 0% และมีผู้เชี่ยวชาญช่วยดูแล
+            </p>
             
-            <div className="flex flex-col md:flex-row gap-6 justify-center md:justify-start items-center md:items-stretch mb-10 animate-fade-in-right" style={{ animationDelay: '0.4s', opacity: 0 }}>
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center md:justify-start items-center mb-10 animate-fade-in-right" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <button 
                 onClick={scrollToWizard} 
-                className="neon-border-btn text-white px-12 py-5 rounded-full text-xl font-black shadow-2xl shadow-orange-500/40 hover:scale-110 active:scale-95 transition-all duration-300"
+                className="neon-border-btn text-white px-12 py-5 rounded-full text-xl font-black shadow-2xl shadow-orange-500/40 hover:scale-110 active:scale-95 transition-all duration-300 w-full sm:w-auto text-center"
               >
-                เช็คเบี้ยเลยตอนนี้
+                เช็คเบี้ยฟรีทันที
               </button>
+
+              <a 
+                href="https://line.me/ti/p/~yourid" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 border-2 border-[#06C755] text-[#06C755] hover:text-white hover:bg-[#06C755] hover:shadow-[#06C755]/30 shadow-lg px-12 py-5 rounded-full text-xl font-black bg-transparent hover:scale-110 active:scale-95 transition-all duration-300 w-full sm:w-auto text-center"
+              >
+                <i className="fab fa-line text-2xl mr-1"></i>
+                แอด LINE เพื่อรับราคา
+              </a>
             </div>
+
+            {/* Bullet points from user screenshot */}
+            <div className="flex flex-col items-center md:items-start gap-4 mb-12 animate-fade-in-right" style={{ animationDelay: '0.6s', opacity: 0 }}>
+              {[
+                'ไม่มีค่าใช้จ่าย',
+                'ตอบไวผ่าน LINE',
+                'ดูแลหลังการขายจริง'
+              ].map((text, idx) => (
+                <div key={idx} className="flex items-center gap-3 text-white text-lg font-bold">
+                  <span className="w-6 h-6 rounded-full border-2 border-orange-500 flex items-center justify-center flex-shrink-0 bg-orange-500/10">
+                    <svg className="w-3.5 h-3.5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
+
 
             {/* Branding & Contact Combined Badge - Responsive */}
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6 bg-white/5 backdrop-blur-md p-4 lg:p-2 lg:pr-8 rounded-3xl lg:rounded-full border border-white/10 w-full lg:w-fit hover:bg-white/10 transition-all duration-300 group animate-fade-in-right" style={{ animationDelay: '0.8s', opacity: 0 }}>
