@@ -277,11 +277,13 @@ const Hero = () => {
         {/* Feature Grid Container - Royal Blue Theme */}
         <div className="bg-[#113583] pt-10 pb-16 relative">
           <div className="container mx-auto px-6 max-w-7xl">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
               {features.map((item, index) => (
                 <div 
                   key={index} 
-                  className="group relative transform bg-white border border-white hover:border-orange-500/40 rounded-3xl p-6 flex flex-col items-center text-center shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.2)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 cursor-pointer"
+                  className={`group relative transform bg-white border border-white hover:border-orange-500/40 rounded-3xl p-6 flex flex-col items-center text-center shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.2)] hover:-translate-y-2 hover:scale-[1.03] transition-all duration-500 cursor-pointer ${
+                    index === 4 ? 'col-span-2 lg:col-span-1 max-w-md mx-auto w-full lg:max-w-none' : ''
+                  }`}
                 >
                   {/* Glowing Radial Light Behind Icon */}
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl z-0 pointer-events-none"></div>
