@@ -98,6 +98,21 @@ const Promotions = () => {
 
   return (
     <section id="promotions" className="py-24 bg-slate-50 relative overflow-hidden">
+      {/* สไตล์แอนิเมชันพิเศษสำหรับป้ายโปรโมชั่นเด้งๆ กระพริบพรีเมียม */}
+      <style>{`
+        @keyframes bounce-diagonal {
+          0%, 100% {
+            transform: rotate(-45deg) translateY(0);
+          }
+          50% {
+            transform: rotate(-45deg) translateY(-5px);
+          }
+        }
+        .animate-bounce-diagonal {
+          animation: bounce-diagonal 2s ease-in-out infinite;
+        }
+      `}</style>
+
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-orange-100 rounded-full blur-3xl -mr-48 -mt-48 opacity-40"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl -ml-48 -mb-48 opacity-40"></div>
@@ -130,6 +145,17 @@ const Promotions = () => {
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
+              {/* ป้ายริบบิ้นเฉียง "โปรโมชั่น" พาดที่มุมบนซ้ายของการ์ด พร้อมแอนิเมชันเด้งแนวทแยง และจุดเรดาร์กระพริบ */}
+              <div className="absolute top-0 left-0 z-30 w-36 h-36 overflow-hidden pointer-events-none select-none">
+                <div className="absolute top-[28px] -left-[32px] w-[160px] py-1.5 bg-gradient-to-r from-orange-500 via-red-500 to-red-600 text-white font-black text-center text-[9px] sm:text-[10px] tracking-[0.2em] shadow-lg shadow-black/25 flex items-center justify-center gap-1.5 border-y border-white/10 -rotate-45 animate-bounce-diagonal">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
+                  </span>
+                  โปรโมชั่น
+                </div>
+              </div>
+
               {/* สไลเดอร์แทร็คหลัก (Slide Track Container) */}
               <div 
                 className="w-full h-full flex transition-transform duration-700 ease-in-out"
