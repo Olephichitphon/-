@@ -44,3 +44,15 @@ export const getCarModels = async (brandId) => {
   return await client.fetch(query, { brandId });
 };
 
+export const getPromotions = async () => {
+  const query = `*[_type == "promotion" && isActive == true] | order(order asc) {
+    _id,
+    title,
+    image,
+    "imageUrl": image.asset->url,
+    link
+  }`;
+  return await client.fetch(query);
+};
+
+

@@ -42,6 +42,15 @@ export default defineConfig({
                       ])
                   )
               ),
+            S.listItem()
+              .title('โปรโมชั่นสไลด์เดอร์')
+              .id('promotions-menu')
+              .icon(() => '🎟️')
+              .child(
+                S.documentTypeList('promotion')
+                  .title('รายการโปรโมชั่นทั้งหมด')
+                  .id('promotion-list')
+              ),
             S.divider(),
             S.listItem()
               .title('ข้อมูลลูกค้า (Leads)')
