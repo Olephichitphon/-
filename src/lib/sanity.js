@@ -1,5 +1,5 @@
 import { createClient } from '@sanity/client';
-import imageUrlBuilder from '@sanity/image-url';
+import { createImageUrlBuilder } from '@sanity/image-url';
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID;
 const dataset = import.meta.env.VITE_SANITY_DATASET;
@@ -20,9 +20,10 @@ export const writeClient = createClient({
   useCdn: false,
   apiVersion: '2024-03-13',
   token,
+  ignoreBrowserTokenWarning: true, // ซ่อนคำเตือนเรื่องการใช้ Token ใน Browser เนื่องจากเราจำเป็นต้องบันทึก Lead
 });
 
-const builder = imageUrlBuilder(client);
+const builder = createImageUrlBuilder(client);
 
 export const urlFor = (source) => builder.image(source);
 
