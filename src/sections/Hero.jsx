@@ -9,135 +9,30 @@ const Hero = () => {
     {
       title: 'บริษัทประกันชั้นนำ',
       subtitle: 'กว่า 20 แห่ง',
-      icon: (
-        <svg 
-          width="32" 
-          height="32" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="url(#og-grad-1)" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
-        >
-          <defs>
-            <linearGradient id="og-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#fb923c" />
-              <stop offset="100%" stopColor="#f97316" />
-            </linearGradient>
-          </defs>
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
-      )
+      iconPath: '/website-images/3d-icons/shield-3d.png'
     },
     {
       title: 'ผ่อน 0%',
       subtitle: 'นานสูงสุด 10 เดือน',
-      icon: (
-        <svg 
-          width="32" 
-          height="32" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="url(#og-grad-2)" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
-        >
-          <defs>
-            <linearGradient id="og-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#fb923c" />
-              <stop offset="100%" stopColor="#f97316" />
-            </linearGradient>
-          </defs>
-          <line x1="19" y1="5" x2="5" y2="19"></line>
-          <circle cx="6.5" cy="6.5" r="2.5"></circle>
-          <circle cx="17.5" cy="17.5" r="2.5"></circle>
-        </svg>
-      )
+      iconPath: '/website-images/3d-icons/percent-3d.png'
     },
     {
       title: 'ผู้เชี่ยวชาญดูแล',
       subtitle: 'ตลอดการทำประกัน',
-      icon: (
-        <svg 
-          width="32" 
-          height="32" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="url(#og-grad-3)" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
-        >
-          <defs>
-            <linearGradient id="og-grad-3" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#fb923c" />
-              <stop offset="100%" stopColor="#f97316" />
-            </linearGradient>
-          </defs>
-          <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
-        </svg>
-      )
+      iconPath: '/website-images/3d-icons/support-3d.png'
     },
     {
       title: 'มั่นใจ ปลอดภัย',
       subtitle: 'ข้อมูลไม่รั่วไหล',
-      icon: (
-        <svg 
-          width="32" 
-          height="32" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="url(#og-grad-4)" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
-        >
-          <defs>
-            <linearGradient id="og-grad-4" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#fb923c" />
-              <stop offset="100%" stopColor="#f97316" />
-            </linearGradient>
-          </defs>
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <polyline points="9 15 11 17 15 13"></polyline>
-        </svg>
-      )
+      iconPath: '/website-images/3d-icons/secure-3d.png'
     },
     {
       title: 'บริการรวดเร็ว',
       subtitle: 'ภายใน 1 นาที',
-      icon: (
-        <svg 
-          width="32" 
-          height="32" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="url(#og-grad-5)" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
-        >
-          <defs>
-            <linearGradient id="og-grad-5" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#fb923c" />
-              <stop offset="100%" stopColor="#f97316" />
-            </linearGradient>
-          </defs>
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-      )
+      iconPath: '/website-images/3d-icons/clock-3d.png'
     }
   ];
+
 
   return (
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
@@ -332,10 +227,16 @@ const Hero = () => {
                     {/* Glowing Radial Light Behind Icon */}
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl z-0 pointer-events-none"></div>
 
-                    {/* Glowing SVG Icon Container */}
-                    <div className="w-16 h-16 rounded-2xl bg-orange-500/5 border border-orange-500/10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/20 transition-all duration-300 z-10">
-                      {item.icon}
+                    {/* Floating Premium 3D Icon Container */}
+                    <div className="w-20 h-20 flex items-center justify-center mb-4 relative z-10 transition-all duration-500 group-hover:scale-115 group-hover:rotate-6">
+                      <img 
+                        src={item.iconPath} 
+                        alt={item.title} 
+                        className="w-full h-full object-contain drop-shadow-[0_8px_16px_rgba(249,115,22,0.15)] group-hover:drop-shadow-[0_16px_32px_rgba(249,115,22,0.35)] transition-all duration-500"
+                        loading="eager"
+                      />
                     </div>
+
 
                     {/* Premium dark corporate navy text */}
                     <h3 className="text-lg font-extrabold text-[#113583] mb-2 tracking-wide z-10 group-hover:text-orange-500 transition-colors">
