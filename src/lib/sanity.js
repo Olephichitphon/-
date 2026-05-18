@@ -56,4 +56,14 @@ export const getPromotions = async () => {
   return await client.fetch(query);
 };
 
+export const getCustomerReviews = async () => {
+  const query = `*[_type == "customerReview"] | order(_createdAt desc) {
+    _id,
+    date,
+    comment,
+    "slipUrls": slips[].asset->url
+  }`;
+  return await client.fetch(query);
+};
+
 

@@ -51,6 +51,15 @@ export default defineConfig({
                   .title('รายการโปรโมชั่นทั้งหมด')
                   .id('promotion-list')
               ),
+            S.listItem()
+              .title('รีวิวจากลูกค้า (Reviews)')
+              .id('customer-reviews-menu')
+              .icon(() => '⭐')
+              .child(
+                S.documentTypeList('customerReview')
+                  .title('รีวิวจากลูกค้าทั้งหมด')
+                  .id('customer-review-list')
+              ),
             S.divider(),
             S.listItem()
               .title('ข้อมูลลูกค้า (Leads)')
