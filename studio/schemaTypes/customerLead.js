@@ -26,6 +26,7 @@ export default {
         { name: 'brand', title: 'ยี่ห้อ', type: 'string' },
         { name: 'model', title: 'รุ่น', type: 'string' },
         { name: 'year', title: 'ปีรถ', type: 'string' },
+        { name: 'engineCc', title: 'ขนาดเครื่องยนต์ (CC)', type: 'string' },
       ],
     },
     {

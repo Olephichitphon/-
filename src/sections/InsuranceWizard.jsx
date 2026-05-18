@@ -46,6 +46,8 @@ const InsuranceWizard = () => {
     year: '2024',
     insuranceType: '1',
     carGroup: '5',
+    engineCc: '',
+    customCc: '',
     name: '',
     phone: '',
     lineId: '',
@@ -97,7 +99,9 @@ const InsuranceWizard = () => {
       modelId: '',
       modelName: '',
       customBrand: '',
-      customModel: ''
+      customModel: '',
+      engineCc: '',
+      customCc: ''
     });
   };
 
@@ -127,6 +131,7 @@ const InsuranceWizard = () => {
 
       const finalBrand = formData.brandId === 'other' ? formData.customBrand : formData.brandName;
       const finalModel = formData.modelId === 'other' ? formData.customModel : formData.modelName;
+      const finalEngineCc = formData.engineCc === 'other' ? formData.customCc : formData.engineCc;
 
       const leadDoc = {
         _type: 'customerLead',
@@ -137,7 +142,8 @@ const InsuranceWizard = () => {
           brand: finalBrand,
           model: finalModel,
           year: formData.year,
-          isCustom: formData.brandId === 'other' || formData.modelId === 'other'
+          engineCc: finalEngineCc || '-',
+          isCustom: formData.brandId === 'other' || formData.modelId === 'other' || formData.engineCc === 'other'
         },
         insuranceType: formData.insuranceType,
         status: 'new',
@@ -172,6 +178,7 @@ const InsuranceWizard = () => {
               "เบอร์โทรศัพท์": formData.phone,
               "ไอดีไลน์": formData.lineId || '-',
               "รถยนต์": `${finalBrand} ${finalModel} (${formData.year})`,
+              "ขนาดเครื่องยนต์": finalEngineCc ? (finalEngineCc === 'EV' ? 'รถยนต์ไฟฟ้า EV' : `${finalEngineCc} CC`) : '-',
               "ประเภทประกัน": `ชั้น ${formData.insuranceType === '1' ? '1' : formData.insuranceType.replace('plus', '+')}`
             })
           });
